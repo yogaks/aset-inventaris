@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title><?php echo SITE_NAME ." : ". ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
-        <link href="<?php echo base_url('css/styles.css" rel="stylesheet') ?>" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
+    <?php $this->load->view('_partials/head.php') ?>
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -18,18 +9,20 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <br/>
-                                    <?php $this->session->flashdata('message'); ?>
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                                        <?php echo $this->session->flashdata('message'); ?>
+                                    </div>
                                     <div class="card-body">
                                         <form method="post" action="<?php echo site_url('auth') ?>" >
                                             <div class="form-group">
                                                 <label class="small mb-1" for="username">Username</label>
-                                                <input class="form-control py-4" name="username" id="username" type="text" placeholder="Enter username" required/>
+                                                <input class="form-control" name="username" id="username" type="text" placeholder="Enter username" required/>
                                             </div>
+                                             <br/>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" name="password" id="inputPassword" type="password" placeholder="Enter password" required/>
+                                                <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Enter password" required/>
                                             </div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
@@ -67,8 +60,6 @@
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="<?php echo base_url('js/scripts.js') ?>"></script>
+        <?php $this->load->view('_partials/js.php') ?>
     </body>
 </html>

@@ -59,20 +59,20 @@ class Auth extends CI_Controller {
 					];
 					$this->session->set_userdata($data);
 
-					if ($user['role_id'] == 0) {
-						redirect('welcome');
+					if ($user['role_id'] == 1) {
+						redirect('dashboard-utama');
 					}
                 } else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password</div>');
-					redirect('auth');
+					redirect('');
 				}
             } else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username Inactive</div>');
-				redirect('auth');
+				redirect('');
 			}
         } else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username Not Registered</div>');
-			redirect('auth');
+			redirect('');
 		}
 	}
 
@@ -95,4 +95,11 @@ class Auth extends CI_Controller {
             redirect('registration');
         }
     }
+
+	public function logout() {
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('role_id');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Successed Logout </div>');
+		redirect('');
+	}
 }
