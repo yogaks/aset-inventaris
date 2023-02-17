@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 14, 2023 at 11:11 PM
+-- Generation Time: Feb 17, 2023 at 12:42 PM
 -- Server version: 10.6.10-MariaDB-cll-lve
 -- PHP Version: 7.4.30
 
@@ -38,6 +38,14 @@ CREATE TABLE `aset` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset`
+--
+
+INSERT INTO `aset` (`as_id`, `as_nama`, `as_jenis`, `as_kode`, `as_jml`, `as_sat`, `created_at`, `updated_at`) VALUES
+(1, 'ZTE-F609', 'ONT', 'F609', 20, 'picis', '2023-02-15 19:45:28', '2023-02-17 01:17:22'),
+(3, 'Huawei', 'OLT', 'MA5600T', 3, 'picis', '2023-02-17 00:16:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -136,7 +144,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `position`, `role_id`, `is_active`, `created_at`, `updated_at`) VALUES
 (1, 'SUPERUSER', 20971108, '$2y$10$ZsloeCzMhHN8VL79xJP9LuU684KH0bw5q5XX.Jg3XZLW7kbBjWDPu', 'ADMIN', 1, 1, '2023-02-12 23:11:51', '2023-02-14 21:07:42'),
-(2, 'ASETINVENTARIS', 123456, '$2y$10$ncFYbtLsojhmWmZpRPusdOQ/Ku3L6DHSXpGfGtkG2jpKX304VlMYW', 'ADMIN', 1, 1, '2023-02-14 23:04:09', '2023-02-14 23:05:33');
+(2, 'ASETINVENTARIS', 123456, '$2y$10$ncFYbtLsojhmWmZpRPusdOQ/Ku3L6DHSXpGfGtkG2jpKX304VlMYW', 'ADMIN', 1, 1, '2023-02-14 23:04:09', '2023-02-14 23:05:33'),
+(3, 'NOCSAS', 97156637, '$2y$10$sVha2P2ZsGnf43LagWpMA.hld85ESJLeiRHiObfdbnLorIuSXteKq', 'ADMIN', 1, 1, '2023-02-16 11:43:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,7 +167,8 @@ CREATE TABLE `users_access_menu` (
 
 INSERT INTO `users_access_menu` (`id`, `role_id`, `menu_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2023-02-14 21:02:53', NULL),
-(2, 1, 100, '2023-02-14 23:10:15', NULL);
+(2, 1, 100, '2023-02-14 23:10:15', NULL),
+(3, 1, 2, '2023-02-15 19:05:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,7 +179,7 @@ INSERT INTO `users_access_menu` (`id`, `role_id`, `menu_id`, `created_at`, `upda
 CREATE TABLE `users_menu` (
   `id` int(5) NOT NULL,
   `menu` varchar(50) NOT NULL,
-  `group_menu` int(5) NOT NULL,
+  `icon` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -178,9 +188,10 @@ CREATE TABLE `users_menu` (
 -- Dumping data for table `users_menu`
 --
 
-INSERT INTO `users_menu` (`id`, `menu`, `group_menu`, `created_at`, `updated_at`) VALUES
-(1, 'dashboard', 0, '2023-02-14 20:53:54', '2023-02-14 22:22:35'),
-(100, 'Manajemen User', 0, '2023-02-14 20:53:54', '2023-02-14 22:22:35');
+INSERT INTO `users_menu` (`id`, `menu`, `icon`, `created_at`, `updated_at`) VALUES
+(1, 'Dashboard', 'fa fa-circle', '2023-02-14 20:53:54', '2023-02-16 00:51:43'),
+(2, 'Aset', 'fa fa-columns', '2023-02-15 19:03:07', '2023-02-16 00:51:48'),
+(100, 'Manajemen User', 'fa fa-user', '2023-02-14 20:53:54', '2023-02-16 00:52:43');
 
 -- --------------------------------------------------------
 
@@ -225,8 +236,8 @@ CREATE TABLE `users_sub_menu` (
 
 INSERT INTO `users_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Dashboard Utama', 'dashboard-utama', 'fas fa-tachometer-alt', 1, '2023-02-14 21:02:12', '2023-02-14 22:12:41'),
-(2, 1, 'Dashboard GRAFIK', 'dashboard-utama', 'fas fa-tachometer-alt', 1, '2023-02-14 21:02:12', '2023-02-14 22:12:41'),
-(3, 100, 'Add User', 'registration', '', 1, '2023-02-14 23:09:31', NULL);
+(3, 100, 'Add User', 'registration', '', 1, '2023-02-14 23:09:31', NULL),
+(4, 2, 'Aset', 'aset', 'fas fa-table me-1', 1, '2023-02-15 19:04:45', '2023-02-16 23:57:52');
 
 --
 -- Indexes for dumped tables
@@ -302,7 +313,7 @@ ALTER TABLE `users_sub_menu`
 -- AUTO_INCREMENT for table `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `as_id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `as_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `berita_acara_aset`
@@ -332,19 +343,19 @@ ALTER TABLE `request_pengadaan_aset`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users_access_menu`
 --
 ALTER TABLE `users_access_menu`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users_menu`
 --
 ALTER TABLE `users_menu`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `users_role`
@@ -356,7 +367,7 @@ ALTER TABLE `users_role`
 -- AUTO_INCREMENT for table `users_sub_menu`
 --
 ALTER TABLE `users_sub_menu`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
