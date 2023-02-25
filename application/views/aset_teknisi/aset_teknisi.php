@@ -16,8 +16,8 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h1>Aset </h1>
-                <h5>Data Aset</h5>
+                <h1>Aset Teknisi</h1>
+                <h5>Data Aset Teknisi</h5>
               </div>
             </div>
 
@@ -27,14 +27,10 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
-
-                  <?php if($this->session->userdata('role_id') != 3 ) { ?>
-                    <div class="x_title">
-                      <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#asetAddNew">Add New</button>
-                      <div class="clearfix"></div>
-                    </div>
-                  <?php } ?>
-
+                  <!-- <div class="x_title">
+                    <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#asetAddNew">Add New</button>
+                    <div class="clearfix"></div>
+                  </div> -->
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
@@ -43,11 +39,13 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Jenis</th>
+                                            <th>Ba Id</th>
                                             <th>Kode</th>
+                                            <th>Jenis</th>
                                             <th>Jumlah</th>
                                             <th>Satuan</th>
+                                            <th>Kondisi</th>
+                                            <th>Keterangan</th>
                                             <th>Created At</th>
                                             <th>Created By</th>
                                             <th>Updated At</th>
@@ -56,24 +54,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $n=1; foreach($aset as $data) : ?>
+                                        <?php $n=1; foreach($asetTeknisi as $data) : ?>
                                         <tr>
                                             <td><?php echo $n++ ?></td>
-                                            <td><?php echo $data->as_nama ?></td>
-                                            <td><?php echo $data->as_jenis ?></td>
-                                            <td><?php echo $data->as_kode ?></td>
-                                            <td><?php echo $data->as_jml ?></td>
-                                            <td><?php echo $data->as_sat ?></td>
+                                            <td><?php echo $data->ba_id ?></td>
+                                            <td><?php echo $data->kode ?></td>
+                                            <td><?php echo $data->jenis ?></td>
+                                            <td><?php echo $data->jumlah ?></td>
+                                            <td><?php echo $data->satuan ?></td>
+                                            <td><?php echo $data->kondisi ?></td>
+                                            <td><?php echo $data->keterangan ?></td>
                                             <td><?php echo $data->created_at ?></td>
                                             <td><?php echo $data->created_by ?></td>
                                             <td><?php echo $data->updated_at ?></td>
                                             <td><?php echo $data->updated_by ?></td>
                                             <td>
-                                              <?php if($this->session->userdata('role_id') != 3 ) { ?>
-                                                <button type="button" class="btn btn-round btn-warning" data-toggle="modal" data-target="#asetUpdate<?php echo $data->as_id ?>">Edit</button>
-                                                <a onclick="deleteConfirm('<?php echo site_url('aset/deleteAset/'.$data->as_id) ?>')"
-                                                href="#!" class="btn btn-danger">Delete</a>
-                                              <?php } ?>
+                                                <button type="button" class="btn btn-round btn-warning" data-toggle="modal" data-target="#asetUpdate<?php echo $data->id ?>">Edit</button>
+                                                <!-- <a onclick="deleteConfirm('<?php echo site_url('asetTeknisi/deleteAsetTeknisi/'.$data->id) ?>')"
+                                                href="#!" class="btn btn-danger">Delete</a> -->
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -96,7 +94,7 @@
       </div>
     </div>
 
-    <?php $this->load->view('aset/_modal'); ?>
+    <?php $this->load->view('aset_teknisi/_modal'); ?>
     <?php $this->load->view('_partials/js'); ?>
 
     <script>

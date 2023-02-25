@@ -11,7 +11,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form method="post" action="<?= site_url('auth') ?>" >
-              <h1>Login</h1>
+              <h1>Aset Inventaris</h1>
               <?php echo $this->session->flashdata('message'); ?>
               <div>
                 <input class="form-control" name="username" id="username" type="text" placeholder="Enter username" required/>
@@ -20,8 +20,8 @@
                 <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Enter password" required/>
               </div>
               <div>
-                <button class="btn btn-default submit" >Log in</button>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <button class="btn btn-default submit" >Login</button>
+                <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
               </div>
 
               <div class="clearfix"></div>
@@ -32,7 +32,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Aset Inventaris</h1>
+                  <!-- <h1><i class="fa fa-paw"></i> Aset Inventaris</h1> -->
                   <p>©2023 All Rights Reserved. Aset Inventaris. Privacy and Terms</p>
                 </div>
               </div>

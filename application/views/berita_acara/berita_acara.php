@@ -16,8 +16,8 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h1>Aset </h1>
-                <h5>Data Aset</h5>
+                <h1>Berita Acara Aset </h1>
+                <h5>Data Berita Acara Aset</h5>
               </div>
             </div>
 
@@ -27,14 +27,6 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
-
-                  <?php if($this->session->userdata('role_id') != 3 ) { ?>
-                    <div class="x_title">
-                      <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#asetAddNew">Add New</button>
-                      <div class="clearfix"></div>
-                    </div>
-                  <?php } ?>
-
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
@@ -43,38 +35,28 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Ba Id</th>
+                                            <th>Nik</th>
                                             <th>Nama</th>
-                                            <th>Jenis</th>
-                                            <th>Kode</th>
-                                            <th>Jumlah</th>
-                                            <th>Satuan</th>
+                                            <th>Date Request</th>
+                                            <th>Date Approval</th>
+                                            <th>Status Request</th>
                                             <th>Created At</th>
-                                            <th>Created By</th>
                                             <th>Updated At</th>
-                                            <th>Updated By</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $n=1; foreach($aset as $data) : ?>
+                                        <?php $n=1; foreach($beritaAcara as $data) : ?>
                                         <tr>
                                             <td><?php echo $n++ ?></td>
-                                            <td><?php echo $data->as_nama ?></td>
-                                            <td><?php echo $data->as_jenis ?></td>
-                                            <td><?php echo $data->as_kode ?></td>
-                                            <td><?php echo $data->as_jml ?></td>
-                                            <td><?php echo $data->as_sat ?></td>
+                                            <td><?php echo $data->ba_id ?></td>
+                                            <td><?php echo $data->user_nik ?></td>
+                                            <td><?php echo $data->user_nama ?></td>
+                                            <td><?php echo $data->date_request ?></td>
+                                            <td><?php echo $data->date_approval ?></td>
+                                            <td><?php if($data->status_request == 0 ) {echo "Input";} elseif($data->status_request == 1 ) {echo "Pending";} elseif($data->status_request == 2 ) {echo "Closed";} ?></td>
                                             <td><?php echo $data->created_at ?></td>
-                                            <td><?php echo $data->created_by ?></td>
                                             <td><?php echo $data->updated_at ?></td>
-                                            <td><?php echo $data->updated_by ?></td>
-                                            <td>
-                                              <?php if($this->session->userdata('role_id') != 3 ) { ?>
-                                                <button type="button" class="btn btn-round btn-warning" data-toggle="modal" data-target="#asetUpdate<?php echo $data->as_id ?>">Edit</button>
-                                                <a onclick="deleteConfirm('<?php echo site_url('aset/deleteAset/'.$data->as_id) ?>')"
-                                                href="#!" class="btn btn-danger">Delete</a>
-                                              <?php } ?>
-                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -96,7 +78,6 @@
       </div>
     </div>
 
-    <?php $this->load->view('aset/_modal'); ?>
     <?php $this->load->view('_partials/js'); ?>
 
     <script>

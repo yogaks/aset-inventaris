@@ -49,7 +49,8 @@
                                 <select class="form-control" name="roleId" id="roleId" required>
                                     <option value="">Select Role User</option>
                                     <option value="1">Admin</option>
-                                    <option value="2">Teknisi</option>
+                                    <option value="2">Admin Gudang</option>
+                                    <option value="3">Teknisi</option>
                                 </select>
                             </div>
                             <div>
