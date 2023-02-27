@@ -36,12 +36,25 @@ class BeritaAcara extends CI_Controller {
 		$username = $this->session->userdata('username');
         
 		if($role_id == 3) {
-			$data['beritaAcara'] = $this->beritaAcaraModel->getByUsername($username);
+			$data['beritaAcara'] = $this->beritaAcaraModel->getByBAUsername($username);
 		} else {
-            $data['beritaAcara'] = $this->beritaAcaraModel->getAll();
+            $data['beritaAcara'] = $this->beritaAcaraModel->getBA();
         }
 
 		$this->load->view('berita_acara/berita_acara', $data);
+	}
+
+	public function laporan() {
+		$role_id = $this->session->userdata('role_id');
+		$username = $this->session->userdata('username');
+        
+		if($role_id == 3) {
+			$data['laporan'] = $this->beritaAcaraModel->getByLaporanUsername($username);
+		} else {
+            $data['laporan'] = $this->beritaAcaraModel->getLaporan();
+        }
+
+		$this->load->view('berita_acara/laporan', $data);
 	}
 
 }

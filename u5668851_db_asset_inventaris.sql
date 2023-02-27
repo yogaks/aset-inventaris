@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 25 Feb 2023 pada 20.28
+-- Waktu pembuatan: 27 Feb 2023 pada 22.30
 -- Versi server: 10.6.10-MariaDB-cll-lve
 -- Versi PHP: 7.4.30
 
@@ -46,7 +46,8 @@ CREATE TABLE `aset` (
 --
 
 INSERT INTO `aset` (`as_id`, `as_nama`, `as_jenis`, `as_kode`, `as_jml`, `as_sat`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(6, 'Vario 123', 'Motor', 'MTR', 16, 'pieces', '2023-02-25 13:43:42', '20971108', '2023-02-25 19:39:15', '2');
+(6, 'Vario 123', 'Motor', 'MTR', 16, 'pieces', '2023-02-25 13:43:42', '20971108', '2023-02-25 19:39:15', '2'),
+(7, 'sumitomo', 'splicer', 'SP', 3, 'pcs', '2023-02-26 22:33:04', '20971108', '2023-02-26 22:33:40', '20971108');
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,8 @@ INSERT INTO `berita_acara_aset` (`ba_id`, `user_nik`, `user_nama`, `date_request
 ('63f9eecfd1dd0', 20971108, 'SUPERUSER', '2023-02-25 18:19:59', '0000-00-00 00:00:00', 1, '2023-02-25 18:19:59', '2023-02-25 18:27:34'),
 ('63f9fdec458a3', 3, 'TEKNISI', '2023-02-25 19:24:30', '2023-02-25 12:34:46', 2, '2023-02-25 19:24:30', '2023-02-25 19:34:46'),
 ('63fa014dd137b', 3, 'TEKNISI', '2023-02-25 19:38:49', '2023-02-25 19:39:15', 2, '2023-02-25 19:38:49', '2023-02-25 19:39:15'),
-('63fa026d0a4ed', 2, 'ADMIN GUDANG', '2023-02-25 19:44:31', '0000-00-00 00:00:00', 0, '2023-02-25 19:44:31', NULL);
+('63fa026d0a4ed', 2, 'ADMIN GUDANG', '2023-02-25 19:44:31', '0000-00-00 00:00:00', 0, '2023-02-25 19:44:31', NULL),
+('63fb7bdbdd20a', 20971108, 'SUPERUSER', '2023-02-26 22:34:32', '0000-00-00 00:00:00', 0, '2023-02-26 22:34:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,8 @@ INSERT INTO `request_pengadaan_aset` (`id_req`, `ba_id`, `kode_aset`, `jenis_ase
 (10, '63f9eecfd1dd0', 'MTR', 'Motor', 1, 'pieces', 1, 1, '', '2023-02-25 18:19:59', '20971108', '2023-02-25 18:27:34', '20971108'),
 (11, '63f9fdec458a3', 'MTR', 'Motor', 1, 'pieces', 2, 2, 'silahkan ambil barangnya', '2023-02-25 19:24:30', '3', '2023-02-25 19:34:46', '2'),
 (12, '63fa014dd137b', 'MTR', 'Motor', 1, 'pieces', 2, 2, '', '2023-02-25 19:38:49', '3', '2023-02-25 19:39:15', '2'),
-(13, '63fa026d0a4ed', 'OPM', 'Alat Ukur', 1, 'pieces', 0, 0, '', '2023-02-25 19:44:31', '2', NULL, '');
+(13, '63fa026d0a4ed', 'OPM', 'Alat Ukur', 1, 'pieces', 0, 0, '', '2023-02-25 19:44:31', '2', NULL, ''),
+(14, '63fb7bdbdd20a', 'MTR', 'MOTOR', 1, 'PCS', 0, 0, 'A', '2023-02-26 22:34:32', '20971108', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -220,7 +223,6 @@ CREATE TABLE `users_access_menu` (
   `id` int(5) NOT NULL,
   `role_id` int(5) NOT NULL,
   `menu_id` int(5) NOT NULL,
-  `sub_menu_id` int(5) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -229,14 +231,14 @@ CREATE TABLE `users_access_menu` (
 -- Dumping data untuk tabel `users_access_menu`
 --
 
-INSERT INTO `users_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 0, '2023-02-14 21:02:53', '2023-02-25 20:26:46'),
-(2, 1, 100, 0, '2023-02-14 23:10:15', '2023-02-25 20:26:44'),
-(3, 1, 2, 0, '2023-02-15 19:05:58', '2023-02-25 20:26:29'),
-(4, 2, 1, 0, '2023-02-25 18:50:10', '2023-02-25 20:26:22'),
-(5, 2, 2, 0, '2023-02-25 18:50:10', '2023-02-25 20:27:02'),
-(6, 3, 1, 0, '2023-02-25 18:50:10', '2023-02-25 20:27:02'),
-(7, 3, 2, 0, '2023-02-25 18:50:10', '2023-02-25 20:27:02');
+INSERT INTO `users_access_menu` (`id`, `role_id`, `menu_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2023-02-14 21:02:53', '2023-02-25 20:26:46'),
+(2, 1, 100, '2023-02-14 23:10:15', '2023-02-25 20:26:44'),
+(3, 1, 2, '2023-02-15 19:05:58', '2023-02-25 20:26:29'),
+(4, 2, 1, '2023-02-25 18:50:10', '2023-02-25 20:26:22'),
+(5, 2, 2, '2023-02-25 18:50:10', '2023-02-25 20:27:02'),
+(6, 3, 1, '2023-02-25 18:50:10', '2023-02-25 20:27:02'),
+(7, 3, 2, '2023-02-25 18:50:10', '2023-02-25 20:27:02');
 
 -- --------------------------------------------------------
 
@@ -310,7 +312,8 @@ INSERT INTO `users_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_activ
 (4, 2, 'Aset', 'aset', 'fas fa-table me-1', 1, '2023-02-15 19:04:45', '2023-02-16 23:57:52'),
 (5, 2, 'Request Aset', 'requestAset', '', 1, '2023-02-18 17:37:38', '2023-02-25 11:45:50'),
 (6, 2, 'Aset Teknisi', 'asetTeknisi', '', 1, '2023-02-25 18:12:21', '2023-02-25 18:12:25'),
-(7, 2, 'Berita Acara Aset', 'beritaAcara', '', 1, '2023-02-25 18:12:42', '2023-02-25 18:13:18');
+(7, 2, 'Berita Acara Aset', 'beritaAcara', '', 1, '2023-02-25 18:12:42', '2023-02-25 18:13:18'),
+(8, 2, 'Laporan', 'laporan', '', 1, '2023-02-25 18:12:42', '2023-02-25 18:13:18');
 
 --
 -- Indexes for dumped tables
@@ -393,7 +396,7 @@ ALTER TABLE `users_sub_menu`
 -- AUTO_INCREMENT untuk tabel `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `as_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `as_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `aset_teknisi`
@@ -417,7 +420,7 @@ ALTER TABLE `order_aset`
 -- AUTO_INCREMENT untuk tabel `request_pengadaan_aset`
 --
 ALTER TABLE `request_pengadaan_aset`
-  MODIFY `id_req` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_req` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -447,7 +450,7 @@ ALTER TABLE `users_role`
 -- AUTO_INCREMENT untuk tabel `users_sub_menu`
 --
 ALTER TABLE `users_sub_menu`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

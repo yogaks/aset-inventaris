@@ -56,4 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['registration'] = 'auth/registration';
 $route['logout'] = 'auth/logout';
 $route['dashboard-utama'] = 'dashboardUtama';
-
+$route['laporan'] = 'beritaAcara/laporan';

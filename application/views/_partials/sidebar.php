@@ -7,7 +7,7 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
+            <!-- <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="<?= base_url(); ?>production/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
@@ -15,7 +15,7 @@
                 <span>Welcome,</span>
                 <h2><?php echo $this->session->userdata('name') ?></h2>
               </div>
-            </div>
+            </div> -->
             <!-- /menu profile quick info -->
 
             <br />

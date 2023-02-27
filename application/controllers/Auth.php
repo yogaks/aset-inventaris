@@ -29,11 +29,11 @@ class Auth extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		$this->form_validation->set_rules('username', 'NIK', 'required|trim');
+		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('auth/login');
+			$this->load->view('auth/login2');
 		} else {
 			$this->login();
 		}
