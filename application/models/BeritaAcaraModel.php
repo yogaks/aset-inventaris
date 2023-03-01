@@ -15,21 +15,29 @@ class BeritaAcaraModel extends CI_Model {
         ];
     }
 
+    public function getAll() {
+        return $this->db->get($this->_berita_acara_aset)->result();
+    }
+
     public function getBA() {
         return $this->db->query("SELECT * FROM berita_acara_aset WHERE status_request = 0 ")->result();
     }
 
     public function getByBAUsername($username) {
-        return $this->db->query("SELECT * FROM berita_acara_aset WHERE user_nik = '$username' AND status_request = 0 ")->result();
+        return $this->db->query("SELECT * FROM berita_acara_aset WHERE user_nik = '$username'")->result();
     }
 
-    public function getLaporan() {
-        return $this->db->query("SELECT * FROM berita_acara_aset WHERE status_request <> 0 ")->result();
+    public function getBaByBaId($ba_id) {
+        return $this->db->query("SELECT * FROM berita_acara_aset WHERE ba_id = '$ba_id' ")->result();
     }
 
-    public function getByLaporanUsername($username) {
-        return $this->db->query("SELECT * FROM berita_acara_aset WHERE user_nik = '$username' AND status_request <> 0 ")->result();
-    }
+    // public function getLaporan() {
+    //     return $this->db->query("SELECT * FROM berita_acara_aset WHERE status_request <> 0 ")->result();
+    // }
+
+    // public function getByLaporanUsername($username) {
+    //     return $this->db->query("SELECT * FROM berita_acara_aset WHERE user_nik = '$username' AND status_request <> 0 ")->result();
+    // }
 
     public function saveFromRequest() {
         $post = $this->input->post();

@@ -43,6 +43,7 @@
                                             <th>Status Request</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +58,9 @@
                                             <td><?php if($data->status_request == 0 ) {echo "Input";} elseif($data->status_request == 1 ) {echo "Pending";} elseif($data->status_request == 2 ) {echo "Closed";} ?></td>
                                             <td><?php echo $data->created_at ?></td>
                                             <td><?php echo $data->updated_at ?></td>
+                                            <td>
+                                              <a type="button" class="btn btn-danger" href="<?= site_url('beritaAcara/createPdfBA/'.$data->ba_id) ?>">PDF</a>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>

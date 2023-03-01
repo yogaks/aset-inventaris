@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 27 Feb 2023 pada 22.30
+-- Waktu pembuatan: 01 Mar 2023 pada 21.55
 -- Versi server: 10.6.10-MariaDB-cll-lve
 -- Versi PHP: 7.4.30
 
@@ -311,9 +311,9 @@ INSERT INTO `users_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_activ
 (3, 100, 'Add User', 'registration', '', 1, '2023-02-14 23:09:31', NULL),
 (4, 2, 'Aset', 'aset', 'fas fa-table me-1', 1, '2023-02-15 19:04:45', '2023-02-16 23:57:52'),
 (5, 2, 'Request Aset', 'requestAset', '', 1, '2023-02-18 17:37:38', '2023-02-25 11:45:50'),
-(6, 2, 'Aset Teknisi', 'asetTeknisi', '', 1, '2023-02-25 18:12:21', '2023-02-25 18:12:25'),
+(6, 2, 'Kondisi Aset Teknisi', 'asetTeknisi', '', 1, '2023-02-25 18:12:21', '2023-03-01 18:01:29'),
 (7, 2, 'Berita Acara Aset', 'beritaAcara', '', 1, '2023-02-25 18:12:42', '2023-02-25 18:13:18'),
-(8, 2, 'Laporan', 'laporan', '', 1, '2023-02-25 18:12:42', '2023-02-25 18:13:18');
+(8, 2, 'Laporan', 'laporan', '', 0, '2023-02-25 18:12:42', '2023-03-01 21:45:52');
 
 --
 -- Indexes for dumped tables

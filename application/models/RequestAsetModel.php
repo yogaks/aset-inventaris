@@ -23,6 +23,10 @@ class RequestAsetModel extends CI_Model {
         return $this->db->query("SELECT * FROM request_pengadaan_aset WHERE created_by = '$username' ")->result();
     }
 
+    public function getByBaId($ba_id) {
+        return $this->db->query("SELECT * FROM request_pengadaan_aset WHERE ba_id = '$ba_id' ")->result();
+    }
+
     public function save() {
         $post = $this->input->post();
 
